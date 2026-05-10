@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detector de Telefone</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        b { color: red; }
+    </style>
+</head>
+<body>
+    <textarea id="entrada" rows="5" cols="40" oninput="marcar()"></textarea>
+    <div id="saida"></div>
+
+    <script>
+        function marcar() {
+            let texto = document.querySelector('#entrada').value;
+            let troca = texto.replace(/\d{5}-\d{4}/g, "<b>$&</b>");
+            document.querySelector('#saida').innerHTML = troca;
+        }
+    </script>
+</body>
+</html>
