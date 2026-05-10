@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detector de E-mail</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        b { color: blue; }
+    </style>
+</head>
+<body>
+    <textarea id="entrada" rows="5" cols="40" oninput="marcar()"></textarea>
+    <div id="saida"></div>
+
+    <script>
+        function marcar() {
+            let texto = document.querySelector('#entrada').value;
+            let padrao = /\w+@\w+\.\w+/g;
+            let troca = texto.replace(padrao, "<b>$&</b>");
+            document.querySelector('#saida').innerHTML = troca;
+        }
+    </script>
+</body>
+</html>
