@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        textarea { width: 100%; margin-bottom: 10px; }
+        #saida { margin-top: 20px; border-top: 1px solid #ccc; }
+        p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>Minha Agenda</h2>
+    <textarea rows="10" cols="50" oninput="atualizarAgenda()"></textarea>
+    <div id="saida"></div>
+
+    <script>
+        function atualizarAgenda() {
+            let texto = document.querySelector('textarea').value;
+            let saida = document.querySelector('#saida');
+            let linhas = texto.split('\n');
+            saida.innerHTML = '';
+            
+            linhas.forEach(function(linha) {
+                let p = document.createElement('p');
+                if (linha.startsWith('x ')) {
+                    p.innerHTML = '☑ ' + linha.replace('x ', '');
+                } else if (linha.startsWith('- ')) {
+                    p.innerHTML = '<del>' + linha.replace('- ', '') + '</del>';
+                } else if (linha.startsWith('_ ')) {
+                    p.innerHTML = '<em>' + linha.replace('_ ', '') + '</em>';
+                } else {
+                    p.innerHTML = '☐ ' + linha;
+                }
+                saida.appendChild(p);
+            });
+        }
+    </script>
+</body>
+</html>
